@@ -1,0 +1,454 @@
+~ $ {
+cho ""
+echo "========== GRADLE =========="
+gradle -v 2>&1
+which gra> echo "========== SYSTEM =========="
+ 2>/dev/null
+du -sh ~/.gradle/caches 2>/dev/null
+echo ""
+echo "> uname -a
+2>/dev/null
+echo ""
+echo "--- Global gradle.properties ---"
+cat ~/.gr> getprop ro.product.cpu.abi
+OOT"
+echo ""
+echo "--- SDK root listing ---"
+ls -la $ANDROID> getprop ro.build.version.release
+ools 2>/dev/null
+echo ""
+echo "---> echo ""
+atforms 2>/dev/null
+echo ""
+echo> echo "========== TERMUX =========="
+cmdline-tools -> echo "PREFIX=$PREFIX"
+o ""
+echo "--- ndk (if any) --> echo "HOME=$HOME"
+ "--- licenses > echo "TERMUX_VERSION=$TERMUX_VERSION"
+nager list (installed only) ---"
+$> echo ""
+d 2>/dev/null || \
+$ANDROID_HOM> echo "========== JAVA =========="
+ found at expected paths)"
+echo ""
+ech> java -version 2>&1
+ersion 2>&1
+readlink -f $> echo "JAVA_HOME=$JAVA_HOME"
+"
+echo "--- aapt ---"
+whi> which java
+- Which aapt2 does Gradle see? ---"
+grep -r "aapt> readlink -f $(which java)
+> echo ""
+le/gradle.properties 2>/dev/null || echo "(no override in global gradle.properties)"
+echo ""
+echo "========== KOTLIN =========="
+which kotlinc 2>/dev/null && kotlinc -version 2>&1
+which kotlin 2>/dev/nu> echo "========== GRADLE =========="
+ksigner aidl; do
+  echo -n "$to> gradle -v 2>&1
+d)"
+done
+echo ""
+echo "========== HARDWARE > which gradle
+HOME
+df -h> readlink -f $(which gradle)
+=========="
+> echo ""
+|android|sdk|k> echo "--- Gradle user home contents ---"
+otlin|git|wget|unzip|cmake|ndk|clang|rust|python|node"
+echo ""
+echo "========== ENV VARS (relevant) =====> ls -la ~/.gradle
+cho ""
+echo "========== > echo ""
+r d in ~/Sketchwa> echo "--- Gradle caches ---"
+en
+    echo "Found project at: $d"
+ > ls -la ~/.gradle/caches 2>/dev/null
+ ""
+    echo "--- current br> du -sh ~/.gradle/caches 2>/dev/null
+radle-wrapper.properties ---"
+ > echo ""
+r.properties 2> echo "--- Gradle wrapper distributions ---"
+ echo ""
+    echo "--- ro> find ~/.gradle/wrapper -maxdepth 3 -type d 2>/dev/null
+ttings.gradle ---"
+    cat sett> echo ""
+"
+    echo "--- settings> echo "--- Global gradle.properties ---"
+ "--- gr> cat ~/.gradle/gradle.properties 2>/dev/null || echo "(none)"
+adle 2>/dev/null
+    echo ""
+  > echo ""
+> echo "========== ANDROID SDK =========="
+ cat app/build.gradle.kts 2>/dev/null
+    echo ""
+    echo "--- gradle/libs.versi> echo "ANDROID_HOME=$ANDROID_HOME"
+it*' | sort
+    echo ""> echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+.git*' | sort
+ > echo ""
+cho ""
+echo "===> echo "--- SDK root listing ---"
+t"
+echo "Size: $(> ls -la $ANDROID_HOME 2>/dev/null
+=="> echo ""
+> echo "--- build-tools versions ---"
+> ls -la $ANDROID_HOME/build-tools 2>/dev/null
+> echo ""
+> echo "--- platforms ---"
+> ls -la $ANDROID_HOME/platforms 2>/dev/null
+> echo ""
+> echo "--- platform-tools ---"
+> ls -la $ANDROID_HOME/platform-tools 2>/dev/null
+> echo ""
+> echo "--- cmdline-tools ---"
+> ls -la $ANDROID_HOME/cmdline-tools 2>/dev/null
+> echo ""
+> echo "--- ndk (if any) ---"
+> ls -la $ANDROID_HOME/ndk 2>/dev/null || echo "(no NDK)"
+> echo ""
+> echo "--- licenses ---"
+> ls -la $ANDROID_HOME/licenses 2>/dev/null
+> echo ""
+> echo "--- sdkmanager list (installed only) ---"
+> $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --list_installed 2>/dev/null || \
+> $ANDROID_HOME/tools/bin/sdkmanager --list_installed 2>/dev/null || \
+> echo "(sdkmanager not found at expected paths)"
+> echo ""
+> echo "========== AAPT2 (CRITICAL) =========="
+> which aapt2
+> aapt2 version 2>&1
+> readlink -f $(which aapt2)
+> file $(readlink -f $(which aapt2)) 2>/dev/null
+> echo ""
+> echo "--- aapt ---"
+> which aapt
+> aapt version 2>&1
+> echo ""
+> echo "--- Which aapt2 does Gradle see? ---"
+> grep -r "aapt2" ~/.gradle/gradle.properties 2>/dev/null || echo "(no override in global gradle.properties)"
+> echo ""
+> echo "========== KOTLIN =========="
+> which kotlinc 2>/dev/null && kotlinc -version 2>&1
+> which kotlin 2>/dev/null && kotlin -version 2>&1
+> echo ""
+> echo "========== BUILD TOOLS PRESENT =========="
+> for tool in d8 dx zipalign apksigner aidl; do
+>   echo -n "$tool: "
+>   which $tool 2>/dev/null || echo "(not found)"
+> done
+> echo ""
+> echo "========== HARDWARE / RESOURCES =========="
+> free -h
+> echo ""
+> df -h $HOME
+> df -h $PREFIX
+> echo ""
+> nproc
+> echo ""
+> echo "========== INSTALLED PKGS (relevant) =========="
+> pkg list-installed 2>/dev/null | grep -Ei "openjdk|gradle|aapt|android|sdk|kotlin|git|wget|unzip|cmake|ndk|clang|rust|python|node"
+> echo ""
+> echo "========== ENV VARS (relevant) =========="
+> env | grep -Ei "JAVA|ANDROID|GRADLE|KOTLIN|PATH|PREFIX|HOME|SDK|NDK" | sort
+> echo ""
+> echo "========== TARGET PROJECT (if cloned) =========="
+> for d in ~/Sketchware-Pro ~/sketchware-pro ~/projects/Sketchware-Pro; do
+>   if [ -d "$d" ]; then
+>     echo "Found project at: $d"
+>     cd "$d"
+>     echo ""
+>     echo "--- git remote ---"
+>     git remote -v 2>/dev/null
+>     echo ""
+>     echo "--- current branch ---"
+>     git branch --show-current 2>/dev/null
+>     echo ""
+>     echo "--- gradle-wrapper.properties ---"
+>     cat gradle/wrapper/gradle-wrapper.properties 2>/dev/null
+>     echo ""
+>     echo "--- root build.gradle ---"
+>     cat build.gradle 2>/dev/null
+>     echo ""
+>     echo "--- root build.gradle.kts ---"
+>     cat build.gradle.kts 2>/dev/null
+>     echo ""
+>     echo "--- settings.gradle ---"
+>     cat settings.gradle 2>/dev/null
+>     echo ""
+>     echo "--- settings.gradle.kts ---"
+>     cat settings.gradle.kts 2>/dev/null
+>     echo ""
+>     echo "--- gradle.properties ---"
+>     cat gradle.properties 2>/dev/null
+>     echo ""
+>     echo "--- app/build.gradle ---"
+>     cat app/build.gradle 2>/dev/null
+>     echo ""
+>     echo "--- app/build.gradle.kts ---"
+>     cat app/build.gradle.kts 2>/dev/null
+>     echo ""
+>     echo "--- gradle/libs.versions.toml ---"
+>     cat gradle/libs.versions.toml 2>/dev/null
+>     echo ""
+>     echo "--- directory tree (top 2 levels) ---"
+>     find . -maxdepth 2 -type d -not -path '*/.git*' | sort
+>     echo ""
+>     echo "--- module list ---"
+>     find . -maxdepth 2 -name "build.gradle*" -not -path '*/.git*' | sort
+>     break
+>   fi
+> done
+> } 2>&1 | tee ~/env-dump.txt
+========== SYSTEM ==========
+Linux localhost 5.4.254-android12-9-660873-gb555c87043d9-ab603 #1 SMP PREEMPT Wed Dec 11 16:34:34 CST 2024 aarch64 Android
+arm64-v8a
+12
+
+========== TERMUX ==========
+PREFIX=/data/data/org.smartide.code/files/usr
+HOME=/data/data/org.smartide.code/files/home
+TERMUX_VERSION=org.smartide.utils.termux
+
+========== JAVA ==========
+openjdk version "21.0.11" 2026-04-21
+OpenJDK Runtime Environment (build 21.0.11)
+OpenJDK 64-Bit Server VM (build 21.0.11, mixed mode)
+JAVA_HOME=
+/data/data/org.smartide.code/files/usr/bin/java
+/data/data/org.smartide.code/files/usr/lib/jvm/java-21-openjdk/bin/java
+
+========== GRADLE ==========
+
+
+------------------------------------------------------------
+Gradle 9.6.1
+------------------------------------------------------------
+
+Build time:    2026-06-26 14:25:50 UTC
+Revision:      309d128bd9fe8c0b71311878fc660b9cbaa07c51
+
+Kotlin:        2.3.21
+Groovy:        4.0.32
+Ant:           Apache Ant(TM) version 1.10.17 compiled on April 6 2026
+Launcher JVM:  21.0.11 (Termux 21.0.11)
+Daemon JVM:    /data/data/org.smartide.code/files/usr/lib/jvm/java-21-openjdk (no Daemon JVM specified, using current Java home)
+OS:            Linux 5.4.254-android12-9-660873-gb555c87043d9-ab603 aarch64
+
+/data/data/org.smartide.code/files/usr/bin/gradle
+/data/data/org.smartide.code/files/usr/opt/gradle/bin/gradle
+
+--- Gradle user home contents ---
+total 100
+drwx------. 10 u0_a273 u0_a273   3452 Sep 11 19:07 .
+drwx------. 18 u0_a273 u0_a273   3452 Sep 15 02:32 ..
+drwx------.  3 u0_a273 u0_a273  20480 Sep 15 02:32 .tmp
+drwx------.  2 u0_a273 u0_a273   3452 Aug 27 19:17 android
+drwx------.  7 u0_a273 u0_a273   3452 Sep 11 19:08 caches
+drwx------.  4 u0_a273 u0_a273   3452 Aug 27 18:02 daemon
+drwx------.  2 u0_a273 u0_a273 110592 Sep 15 00:53 kotlin-profile
+drwx------.  5 u0_a273 u0_a273   3452 Aug 27 17:57 native
+drwx------.  3 u0_a273 u0_a273   3452 Aug 27 17:57 notifications
+drwx------.  3 u0_a273 u0_a273   3452 Jun 24 23:23 wrapper
+
+--- Gradle caches ---
+total 205
+drwx------.  7 u0_a273 u0_a273   3452 Sep 11 19:08 .
+drwx------. 10 u0_a273 u0_a273   3452 Sep 11 19:07 ..
+drwx------. 14 u0_a273 u0_a273   3452 Sep 14 23:00 9.6.1
+-rw-------.  1 u0_a273 u0_a273    181 Sep 11 19:08 CACHEDIR.TAG
+drwx------.  2 u0_a273 u0_a273 249856 Sep 15 00:53 build-cache-1
+drwx------. 14 u0_a273 u0_a273   3452 Sep 14 22:15 jars-9
+drwx------.  2 u0_a273 u0_a273   3452 Sep 11 19:08 journal-1
+drwx------.  4 u0_a273 u0_a273   3452 Sep 11 19:13 modules-2
+
+1.7G    /data/data/org.smartide.code/files/home/.gradle/caches
+
+--- Gradle wrapper distributions ---
+/data/data/org.smartide.code/files/home/.gradle/wrapper
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-8.2.1-bin
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-8.2.1-bin/5hap6b9n41hkg4jeh2au2pllh
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-7.4.2-bin
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-7.4.2-bin/48ivgl02cpt2ed3fh9dbalvx8
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-9.1.0-all
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-9.1.0-all/7wzd0jkjit61aq2p43wpjgij9
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-9.6.1-bin
+/data/data/org.smartide.code/files/home/.gradle/wrapper/dists/gradle-9.6.1-bin/4ticwg1pgcbps2hj28r8so764
+
+--- Global gradle.properties ---
+(none)
+
+========== ANDROID SDK ==========
+ANDROID_HOME=/data/data/org.smartide.code/files/usr/opt/android-sdk
+ANDROID_SDK_ROOT=/data/data/org.smartide.code/files/usr/opt/android-sdk
+
+--- SDK root listing ---
+total 56
+drwx------. 9 u0_a273 u0_a273  3452 Aug 27 19:18 .
+drwx------. 8 u0_a273 u0_a273  3452 Sep 11 01:51 ..
+-rw-------. 1 u0_a273 u0_a273    16 Aug 27 19:18 .knownPackages
+drwx------. 2 u0_a273 u0_a273  3452 Aug 27 19:18 .temp
+drwx------. 5 u0_a273 u0_a273  3452 Aug 27 16:01 build-tools
+drwx------. 3 u0_a273 u0_a273  3452 Aug 27 16:02 cmake
+drwx------. 2 u0_a273 u0_a273  3452 Aug 27 16:03 licenses
+drwx------. 3 u0_a273 u0_a273  3452 Aug 27 19:10 ndk
+drwx------. 3 u0_a273 u0_a273  3452 Aug 27 19:18 platform-tools
+drwx------. 5 u0_a273 u0_a273  3452 Aug 27 16:02 platforms
+-rwx------. 1 u0_a273 u0_a273 10484 Aug  9 18:57 termux-ndk-fix.sh
+-rw-------. 1 u0_a273 u0_a273  6393 Aug  9 18:57 termux-ndk-host-tag.init.gradle
+
+--- build-tools versions ---
+total 18
+drwx------. 5 u0_a273 u0_a273 3452 Aug 27 16:01 .
+drwx------. 9 u0_a273 u0_a273 3452 Aug 27 19:18 ..
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 34.0.0
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 35.0.0
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 37.0.0
+
+--- platforms ---
+total 18
+drwx------. 5 u0_a273 u0_a273 3452 Aug 27 16:02 .
+drwx------. 9 u0_a273 u0_a273 3452 Aug 27 19:18 ..
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 android-34
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 android-35
+drwx------. 6 u0_a273 u0_a273 3452 Aug 27 19:17 android-36
+
+--- platform-tools ---
+total 20251
+drwx------. 3 u0_a273 u0_a273     3452 Aug 27 19:18 .
+drwx------. 9 u0_a273 u0_a273     3452 Aug 27 19:18 ..
+-rw-------. 1 u0_a273 u0_a273  1175837 Aug 27 19:18 NOTICE.txt
+-rwx--x--x. 1 u0_a273 u0_a273 10642368 Aug 27 19:18 adb
+-rwx--x--x. 1 u0_a273 u0_a273   302096 Aug 27 19:18 etc1tool
+-rwx--x--x. 1 u0_a273 u0_a273  3333552 Aug 27 19:18 fastboot
+-rwx--x--x. 1 u0_a273 u0_a273    13632 Aug 27 19:18 hprof-conv
+drwx------. 2 u0_a273 u0_a273     3452 Aug 27 19:18 lib64
+-rwx--x--x. 1 u0_a273 u0_a273   284120 Aug 27 19:18 make_f2fs
+-rwx--x--x. 1 u0_a273 u0_a273   284104 Aug 27 19:18 make_f2fs_casefold
+-rwx--x--x. 1 u0_a273 u0_a273  1008464 Aug 27 19:18 mke2fs
+-rw-------. 1 u0_a273 u0_a273     1157 Aug 27 19:18 mke2fs.conf
+-rw-------. 1 u0_a273 u0_a273    18404 Aug 27 19:18 package.xml
+-rw-------. 1 u0_a273 u0_a273       38 Aug 27 19:18 source.properties
+-rwx--x--x. 1 u0_a273 u0_a273  3618896 Aug 27 19:18 sqlite3
+
+--- cmdline-tools ---
+
+--- ndk (if any) ---
+total 11
+drwx------. 3 u0_a273 u0_a273 3452 Aug 27 19:10 .
+drwx------. 9 u0_a273 u0_a273 3452 Aug 27 19:18 ..
+drwx------. 4 u0_a273 u0_a273 3452 Aug 27 19:10 28.2.13676358
+
+--- licenses ---
+total 15
+drwx------. 2 u0_a273 u0_a273 3452 Aug 27 16:03 .
+drwx------. 9 u0_a273 u0_a273 3452 Aug 27 19:18 ..
+-rw-------. 1 u0_a273 u0_a273  165 Aug  9 18:57 android-sdk-license
+-rw-------. 1 u0_a273 u0_a273   83 Aug  9 18:57 android-sdk-preview-license
+
+--- sdkmanager list (installed only) ---
+(sdkmanager not found at expected paths)
+
+========== AAPT2 (CRITICAL) ==========
+/data/data/org.smartide.code/files/usr/bin/aapt2
+Android Asset Packaging Tool (aapt) 2.20
+/data/data/org.smartide.code/files/usr/bin/aapt2
+/data/data/org.smartide.code/files/usr/bin/aapt2: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /system/bin/linker64, for Android 30, built by NDK r29 (14206865), stripped
+
+--- aapt ---
+/data/data/org.smartide.code/files/usr/bin/aapt
+Android Asset Packaging Tool, v0.2
+
+--- Which aapt2 does Gradle see? ---
+(no override in global gradle.properties)
+
+========== KOTLIN ==========
+/data/data/org.smartide.code/files/usr/bin/kotlinc
+
+info: kotlinc-jvm 2.4.10 (JRE 21.0.11)
+/data/data/org.smartide.code/files/usr/bin/kotlin
+Kotlin version 2.4.10-release-377 (JRE 21.0.11)
+
+========== BUILD TOOLS PRESENT ==========
+d8: /data/data/org.smartide.code/files/usr/bin/d8
+dx: (not found)
+zipalign: /data/data/org.smartide.code/files/usr/bin/zipalign
+apksigner: /data/data/org.smartide.code/files/usr/bin/apksigner
+aidl: /data/data/org.smartide.code/files/usr/bin/aidl
+
+========== HARDWARE / RESOURCES ==========
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       3.9Gi       420Mi        47Mi       3.3Gi       3.4Gi
+Swap:          4.7Gi       1.7Gi       3.0Gi
+
+Filesystem       Size Used Avail Use% Mounted on
+/dev/block/dm-11 113G 104G  9.0G  92% /data/data/com.google.android.gms
+Filesystem       Size Used Avail Use% Mounted on
+/dev/block/dm-11 113G 104G  9.0G  92% /data/data/com.google.android.gms
+
+8
+
+========== INSTALLED PKGS (relevant) ==========
+aapt2/stable,now 17.0.0.1 aarch64 [installed,automatic]
+aapt/stable,now 17.0.0.1 aarch64 [installed,automatic]
+android-exec-loader/now 1.7.31 aarch64 [installed,upgradable to: 1.7.41]
+android-sdk/stable,now 36.2-11 all [installed]
+android-tools/stable,now 35.0.2-6 aarch64 [installed]
+clang/stable,now 21.1.8-2 aarch64 [installed,automatic]
+cmake/stable,now 4.3.4 aarch64 [installed,automatic]
+git/stable,now 2.54.0-1 aarch64 [installed,automatic]
+gradle/stable,now 1:9.6.1 all [installed]
+kotlin/stable,now 2.4.10 all [installed]
+libandroid-execinfo/stable,now 0.1-3 aarch64 [installed,automatic]
+libandroid-glob/stable,now 0.7-1 aarch64 [installed]
+libandroid-posix-semaphore/stable,now 0.1-4 aarch64 [installed]
+libandroid-selinux/stable,now 14.0.0.11-1 aarch64 [installed]
+libandroid-shmem/stable,now 0.7-2 aarch64 [installed,automatic]
+libandroid-spawn/stable,now 0.4-1 aarch64 [installed,automatic]
+libandroid-stub/stable,now 29-1 aarch64 [installed,automatic]
+libandroid-support/stable,now 28 aarch64 [installed]
+libandroid-sysv-semaphore/stable,now 0.1-1 aarch64 [installed,automatic]
+ndk-sysroot/stable,now 29-2 aarch64 [installed]
+nodejs/stable,now 26.3.1-1 aarch64 [installed]
+openjdk-21-x/stable,now 21.0.11-3 aarch64 [installed,automatic]
+openjdk-21/stable,now 21.0.11-3 aarch64 [installed]
+python/stable,now 3.13.13-3 aarch64 [installed]
+unzip/stable,now 6.0-10 aarch64 [installed]
+wget/stable,now 1.25.0-1 aarch64 [installed]
+
+========== ENV VARS (relevant) ==========
+ANDROID_ART_ROOT=/apex/com.android.art
+ANDROID_ASSETS=/system/app
+ANDROID_DATA=/data
+ANDROID_HOME=/data/data/org.smartide.code/files/usr/opt/android-sdk
+ANDROID_I18N_ROOT=/apex/com.android.i18n
+ANDROID_ROOT=/system
+ANDROID_SDK_ROOT=/data/data/org.smartide.code/files/usr/opt/android-sdk
+ANDROID_STORAGE=/storage
+ANDROID_TZDATA_ROOT=/apex/com.android.tzdata
+BOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/system/framework/itel_addition.jar:/system/framework/radio_interactor_common.jar:/system/framework/unisoc_ims_common.jar:/system/framework/transsion-telephony-common.jar:/system/framework/unisoc-framework.jar:/apex/com.android.appsearch/javalib/framework-appsearch.jar:/apex/com.android.conscrypt/javalib/conscrypt.jar:/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar:/apex/com.android.media/javalib/updatable-media.jar:/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar:/apex/com.android.mediaprovider/javalib/framework-pdf.jar:/apex/com.android.mediaprovider/javalib/framework-photopicker.jar:/apex/com.android.os.statsd/javalib/framework-statsd.jar:/apex/com.android.permission/javalib/framework-permission.jar:/apex/com.android.permission/javalib/framework-permission-s.jar:/apex/com.android.scheduling/javalib/framework-scheduling.jar:/apex/com.android.sdkext/javalib/framework-sdkextensions.jar:/apex/com.android.tethering/javalib/framework-connectivity.jar:/apex/com.android.tethering/javalib/framework-tethering.jar:/apex/com.android.wifi/javalib/framework-wifi.jar:/apex/com.transsion.mi.os.framework/javalib/os-framework.jar
+DEX2OATBOOTCLASSPATH=/apex/com.android.art/javalib/core-oj.jar:/apex/com.android.art/javalib/core-libart.jar:/apex/com.android.art/javalib/okhttp.jar:/apex/com.android.art/javalib/bouncycastle.jar:/apex/com.android.art/javalib/apache-xml.jar:/system/framework/framework.jar:/system/framework/framework-graphics.jar:/system/framework/ext.jar:/system/framework/telephony-common.jar:/system/framework/voip-common.jar:/system/framework/ims-common.jar:/apex/com.android.i18n/javalib/core-icu4j.jar:/system/framework/itel_addition.jar:/system/framework/radio_interactor_common.jar:/system/framework/unisoc_ims_common.jar:/system/framework/transsion-telephony-common.jar:/system/framework/unisoc-framework.jar
+GRADLE_OPTS=-Dorg.gradle.project.android.aapt2FromMavenOverride=/data/data/org.smartide.code/files/usr/bin/aapt2
+GYP_DEFINES=android_ndk_path=''
+HOME=/data/data/org.smartide.code/files/home
+OLDPWD=/data/data/org.smartide.code/files/home/projects/ReelixMovies_native
+PATH=/data/data/org.smartide.code/files/usr/bin:/product/bin:/apex/com.android.runtime/bin:/apex/com.android.art/bin:/system_ext/bin:/system/bin:/system/xbin:/odm/bin:/vendor/bin:/vendor/xbin
+PREFIX=/data/data/org.smartide.code/files/usr
+PWD=/data/data/org.smartide.code/files/home
+SYSTEMSERVERCLASSPATH=/system/framework/com.android.location.provider.jar:/system/framework/services.jar:/system/framework/ethernet-service.jar:/system/framework/unisoc-services.jar:/apex/com.android.appsearch/javalib/service-appsearch.jar:/apex/com.android.art/javalib/service-art.jar:/apex/com.android.media/javalib/service-media-s.jar:/apex/com.android.permission/javalib/service-permission.jar:/apex/com.transsion.kolun/javalib/kolun.jar:/apex/com.transsion.mi.os.framework/javalib/os-services.jar
+
+========== TARGET PROJECT (if cloned) ==========
+~ $
+~ $ echo ""
+
+~ $ echo "========================================"
+========================================
+~ $ echo "Output saved to: ~/env-dump.txt"
+Output saved to: ~/env-dump.txt
+~ $ echo "Size: $(du -h ~/env-dump.txt | cut -f1)"
+Size: 16K
+~ $ echo "========================================"
+========================================
+~ $
